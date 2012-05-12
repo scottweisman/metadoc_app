@@ -1,5 +1,6 @@
-<%= form_tag('/documents/upload', :multipart => true) do %>
-  <%= file_field_tag 'document' %>
-  <%= hidden_field_tag 'token', 'hNX6fJnDQogYCajrt1KM8Tzy'%>
-  <%= submit_tag 'Submit' %>
+<%= form_tag("upload", :controller => "documents", :action => "getuuid") do %>
+  <%= label_tag(:url, "Paste your document URL below.") %>
+  <%= text_field_tag(:url) %>
+  <%= submit_tag("Submit") %>
 <% end %>
+

@@ -49,6 +49,7 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @document = Document.new(params[:document])
+    @api_token = "hNX6fJnDQogYCajrt1KM8Tzy"
 
     respond_to do |format|
       if @document.save
@@ -90,16 +91,20 @@ class DocumentsController < ApplicationController
   end
   
   def upload
-    @api_token = "hNX6fJnDQogYCajrt1KM8Tzy"
-    document = params[:document]
-    file = document.original_filename
-    
-    RestClient.post 'https://crocodoc.com/api/v2/document/upload/', :params => {:token => 'hNX6fJnDQogYCajrt1KM8Tzy', :file => File.new(document, 'rb')}
-    
-    
+    @document = Document.new
+
+
     # RestClient.post 'https://crocodoc.com/api/v2/document/upload/token=hNX6fJnDQogYCajrt1KM8Tzy', :file =>  File.new(document, 'rb')
     
     # RestClient.post "https://crocodoc.com/api/v2/document/upload/", "token=#{params[:token]}&file=#{params[:document].original_filename}"
     
+  end
+  
+  def getuuid
+        @document = Document.new 
+        @result = JSON.parse(RestClient.post "https://crocodoc.com/api/v2/document/upload?", :token => "hNX6fJnDQogYCajrt1KM8Tzy", :url => "#{params[:url]}")
+        @document.uuid = @result["uuid"]
+        @document.save
+        redirect_to documents_url
   end
 end
