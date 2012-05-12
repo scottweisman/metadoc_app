@@ -91,10 +91,15 @@ class DocumentsController < ApplicationController
   
   def upload
     @api_token = "hNX6fJnDQogYCajrt1KM8Tzy"
+    document = params[:document]
+    file = document.original_filename
     
-    # RestClient.post 'https://crocodoc.com/api/v2/document/upload', ":token => #{@api_token}", ":file =>  File.new('/Users/jgladfelter/Desktop/10.61.png', 'rb'")
+    RestClient.post 'https://crocodoc.com/api/v2/document/upload/', :params => {:token => 'hNX6fJnDQogYCajrt1KM8Tzy', :file => File.new(document, 'rb')}
     
-    RestClient.post "https://crocodoc.com/api/v2/document/upload/", "token=#{params[:token]}&file=#{params[:document].original_filename}"
+    
+    # RestClient.post 'https://crocodoc.com/api/v2/document/upload/token=hNX6fJnDQogYCajrt1KM8Tzy', :file =>  File.new(document, 'rb')
+    
+    # RestClient.post "https://crocodoc.com/api/v2/document/upload/", "token=#{params[:token]}&file=#{params[:document].original_filename}"
     
   end
 end
