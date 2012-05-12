@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p><a href="https://crocodoc.com/api/v2/download/document?token=<%= @api_token %>&uuid=<%= @document.uuid %>">Download this file</a></p>
-<%= link_to 'Edit', edit_document_path(@document) %><br />
-<%= link_to 'Back', documents_path %></p>
+	<%= link_to 'Back', documents_path %>
+<div align=center>
 
+	<p><a href="https://crocodoc.com/api/v2/download/document?token=<%= @api_token %>&uuid=<%= @document.uuid %>">Download this file</a></p>
 <iframe src="https://crocodoc.com/view/<%= @session %>" width="75%"
 height="700px" name="youriframe" frameborder="1" vspace="0" hspace="0"
 marginwidth="0" marginheight="0" scrolling="yes" noresize></iframe>
-
+</div>
 

@@ -11,7 +11,7 @@
 <% @documents.each do |document| %>
   <tr>
 	<td><a href="/documents/<%=document.id%>"><img src="https://crocodoc.com/api/v2/download/thumbnail?token=<%= @api_token %>&uuid=<%= document.uuid %>&size=300x300"></a></td>
-	<td><%= link_to 'Delete', document, confirm: 'Are you sure?', method: :delete %></td>
+<td><%= link_to 'Delete', document, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
