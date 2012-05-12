@@ -1,0 +1,5 @@
+<%= form_tag('/documents/upload', :multipart => true) do %>
+  <%= file_field_tag 'document' %>
+  <%= hidden_field_tag 'token', 'hNX6fJnDQogYCajrt1KM8Tzy'%>
+  <%= submit_tag 'Submit' %>
+<% end %>
